@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-ReactNativeCodingChallenges/Pods-ReactNativeCodingChallenges-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/React-timing/React-timing_privacy.bundle
