@@ -1,6 +1,6 @@
 ---
 name: start-challenge
-description: Start a new React Native coding challenge in this repo. Asks the user for the challenge name and details, researches the challenge if needed, then scaffolds and implements it under src/challenges/ per CLAUDE.md conventions. Use when the user types /start-challenge.
+description: Start a new React Native coding challenge in this repo. Asks the user for the challenge name and details, researches the challenge if needed, then scaffolds (folder, README, stub component only — never implements the solution) under src/challenges/ per CLAUDE.md conventions. Use when the user types /start-challenge.
 user-invocable: true
 ---
 
@@ -8,6 +8,13 @@ user-invocable: true
 
 Kicks off a new challenge in this study repo. Follow CLAUDE.md's structure and
 conventions exactly — this skill is just the workflow for getting there.
+
+**Scaffold only — never implement the solution.** This repo exists so the user
+practices writing these challenges themselves. This skill's job stops at a
+folder, a README of rules, static setup data if needed, and a bare component
+stub. Do not write game logic, state management, hooks, or wired-up UI
+interactions, no matter how straightforward the challenge seems. See step 3
+for exactly what "stub" means.
 
 Arguments passed: `$ARGUMENTS` (may already contain a challenge name/details —
 if so, skip straight to step 2 confirmation instead of re-asking for what's
@@ -40,20 +47,34 @@ enough.
 If the user gave a genuinely novel or personal spec, don't override it with
 web results — their description is the spec.
 
-## 3. Scaffold the folder
+## 3. Scaffold the folder — stub only, no implementation
 
-Create `src/challenges/<kebab-case-name>/` with, per CLAUDE.md:
+Create `src/challenges/<kebab-case-name>/` with:
 
-- `index.tsx` — default export, the challenge's root component.
-- `README.md` — what the challenge is, the rules/requirements as understood
-  (including anything pulled from research), and brief notes on the
-  implementation approach taken.
+- `index.tsx` — default export, the challenge's root component, but only as
+  a **bare stub**: renders a minimal placeholder (e.g. a title/heading). No
+  game logic, no `useState`/`useEffect`, no event handlers, no child
+  components beyond what's needed to render the placeholder. This is the
+  file the user will actually build out themselves.
+- `README.md` — what the challenge is and the rules/requirements as
+  understood (including anything pulled from research). Do **not** include
+  an "approach" section describing an implementation, since there isn't
+  one yet — leave that for the user to fill in once they've built it, if
+  they want to.
+- Static setup data only, if the challenge genuinely needs it (e.g. a word
+  list for Wordle, a puzzle bank) — data files with no logic are fine to
+  provide since they aren't "the challenge" itself.
 
-Follow existing repo conventions (already read from CLAUDE.md): TypeScript
-everywhere, plain `StyleSheet.create` co-located in the challenge's own
-file(s), built-in React state only — no navigation libraries, no state
-management libraries, no cross-challenge shared utilities unless explicitly
-asked.
+Explicitly do NOT create: pure-logic modules (e.g. `gameLogic.ts`,
+`useGameState.ts`), their Jest tests, or any interactive UI beyond the
+placeholder. If you catch yourself writing an algorithm, a reducer, a
+`useState` call that drives gameplay, or styled interactive elements —
+stop, that's the user's part.
+
+Follow existing repo conventions (already read from CLAUDE.md) for whatever
+you do write: TypeScript everywhere, plain `StyleSheet.create` co-located in
+the challenge's own file(s) — no navigation libraries, no state management
+libraries, no cross-challenge shared utilities unless explicitly asked.
 
 ## 4. Wire up App.tsx
 

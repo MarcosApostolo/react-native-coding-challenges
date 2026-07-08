@@ -37,8 +37,6 @@ don't wire up React Navigation or a picker screen for this.
 ## Conventions
 
 - TypeScript for all new files (`.tsx`/`.ts`).
-- Keep pure logic (game rules, validation, data transforms) separate from components, and
-  unit test the logic with Jest — that's the part worth covering with tests here.
 - Prefer plain `StyleSheet.create` styles co-located in the challenge's own file(s); no
   shared design system/theme needed unless a challenge specifically calls for it.
 - Don't add navigation, state-management libraries (Redux/Zustand/etc.), or other
@@ -55,8 +53,12 @@ don't wire up React Navigation or a picker screen for this.
 
 ## Working with Claude here
 
-- When starting a new challenge, scaffold the folder under `src/challenges/`, implement it,
-  point `App.tsx` at it, and mention that the import was swapped.
+- **This is a practice repo — the user writes the solutions, not Claude.** When starting a
+  new challenge, only scaffold it: create the folder under `src/challenges/`, a `README.md`
+  with the rules/requirements, any purely static setup data a challenge needs (e.g. a word
+  list), and a bare `index.tsx` stub (renders a minimal placeholder — no game logic, no
+  state, no event handlers). Point `App.tsx` at the new stub and mention that the import was
+  swapped.
 - Keep each challenge isolated — don't extract shared components/utilities across
   challenges unless explicitly asked; duplication between exercises is fine and often
   clearer for a study repo like this.
